@@ -7,7 +7,7 @@ function prompt_char {
 }
 function k8s_ctx {
   PP=$(printf "\U2b55")
-  X=`oc config current-context |cut -d\/ -f1,2`
+  X=`kubectl config current-context |cut -d\/ -f1,2`
   if [ $? -eq 0 ]; then
     echo -e "$PP context: \e[3m ${X} \e[0m";
   else
