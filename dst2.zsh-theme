@@ -9,7 +9,15 @@ function prompt_char {
 }
 function k8s_ctx {
   PP=$(printf "\U2b55")
-  X=`oc config current-context |cut -d\/ -f1,2`
+  if [ -z $K8 ]; then
+    k8ctls=(oc kubectl)
+    for k in "${k8ctls[@]}"; do
+      hash "$k"
+      if [ $? -eq 0 ]; then export K8="$k"; break;  fi
+    done
+  fi
+
+  X=`$K8 config current-context |cut -d\/ -f1,2`
   if [ $? -eq 0 ]; then
     echo -e "$PP\e[3m ${X} \e[0m";
   else
