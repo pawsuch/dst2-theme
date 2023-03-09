@@ -30,10 +30,8 @@ function k8s_ctx {
     echo ""
   fi
 }
-
 RPROMPT='%{$fg[green]%}[%*]%{$reset_color%}'
 PROMPT='%(?, ,%{$fg[red]%}FAIL%{$reset_color%})
 %{$fg[red]%}$(k8s_ctx)%{$reset_color%}
-${FOLDER} %{$fg_bold[blue]%}${LBR}%~${RBR} %{$reset_color%}$(git_prompt_info)
+${FOLDER}%{$fg_bold[blue]%}${LBR}%~${RBR}%{$reset_color%}$(git_prompt_info)
    %{$fg[blue]%}$PRM  %{$reset_color%}'
-
